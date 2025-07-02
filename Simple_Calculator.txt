@@ -115,10 +115,14 @@ Module division(Real operand_1, Real operand_2):
 	// A local variable to store the calculation results
 	Declare Real results;
 	
-	// Perform the calculations
-	Set results = operand_1 / operand_2;
+	// make sure that the user does not divide by zero
+	If operand_1 == 0 OR operand_2 == 0 Then:
+		Display "Error! You can not divide by zero";
+	Else:
+		// Perform the calculations
+		Set results = operand_1 / operand_2;
 	
-	// Display the result to the user
-	Display results;
+		// Display the result to the user
+		Display results;
 End Module
 
