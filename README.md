@@ -1,7 +1,10 @@
 
 [-] To any one who is reading this.
+
 [-] The current repository will be composed of programs written purely in psuedocode.
+
 [-] The main aim of this activity is to display the following abilities and strengths.
+
    [*] Abstact Thinking - This is thinking in terms of logic, structure and flow.
    [*] Algorithmic Thinking - The ability to focus on a sequence of steps
    [*] Problem Decomposition - The ability to break problems and task into smaller tasks
