@@ -1,0 +1,124 @@
+The Project is: Build a simple Calculator
+Story:
+We have to ask a user to enter 3 input. 
+One is the first number, second is the operator and third is the second number.
+We have to create functions for each operator and return and display their results.
+** The main challenge would be if user enters multiple operators one after the other
+** When a user chains operations
+like if there is more than one operator in an equation
+For the chains of operation it works with evaluating the user input. 
+Which would need to evaluate one expression or if there is a chain of expressions.
+This changes the input factor***
+
+Module Main:
+	// Declare All variables
+	Declare Real operand_1, operand_2, results = 0;
+	Declare String operator;
+	
+	// Get user input
+	Display "May you enter the first number: ";
+	Input operand_1;
+	
+	Call operator_symbol(operator);
+	
+	Display "May you enter the second number: ";
+	Input operand_2;
+	
+	// input validate
+	// Yet to be known
+	
+	// Checking which operator was called
+	Select operator:
+		Case "plus":
+			Call addition(operand_1, operand_2);
+		Case "minus":
+			Call subtraction(operand_1, operand_2);
+		Case "divide":
+			Call division(operand_1, operand_2);
+		Case "multiply":
+			Call multiplication(operand_1, operand_2);
+	End Select
+	
+End Module
+
+Module operator_symbol(String Ref operator):
+	// This module presents the user with the options of the operators that they can use.
+	// matches their choice to a function that will be called outside of this module.
+
+	//Declare the local variables of the module
+	Declare String symbol;
+	
+	// Get user input
+	Display "The following are the operators you can use: ";
+	Display "+ plus, / divide, * multiply, - minus: ";
+	Display "Please enter the symbol for the operator you wish to use: ";
+	Input symbol;
+
+	// Now check the value of the symbol and execute the statements
+	Select symbol:
+		Case +:
+			Set operator = "plus";
+		Case -:
+			Set operator = "minus";
+		Case *:
+			Set operator = "multiply";
+		Case /:
+			Set operator = "divide";
+		Default:
+			Display "The operator you have entered is invalid";
+	End Select
+End Module
+
+Module addition(Real operand_1, Real operand_2):
+	// This module is to add 2 numbers together and return the result
+	
+	// A local variable to store the calculation results
+	Declare Real results;
+	
+	// Perform the calculations
+	Set results = operand_1 + operand_2;
+	
+	// Display the result to the user
+	Display results;
+	
+End Module
+
+Module subtraction(Real operand_1, Real operand_2):
+	// This module is to subtract 2 numbers together and return the result
+	
+	// A local variable to store the calculation results
+	Declare Real results;
+	
+	// Perform the calculations
+	Set results = operand_1 - operand_2;
+	
+	// Display the result to the user
+	Display results;
+End Module
+
+Module multiplication(Real operand_1, Real operand_2):
+	// This module is to multiply 2 numbers together and return the result
+	
+	// A local variable to store the calculation results
+	Declare Real results;
+	
+	// Perform the calculations
+	Set results = operand_1 * operand_2;
+	
+	// Display the result to the user
+	Display results;
+End Module
+
+Module division(Real operand_1, Real operand_2):
+	// This module is to divide 2 numbers together and return the result
+	
+	// A local variable to store the calculation results
+	Declare Real results;
+	
+	// Perform the calculations
+	Set results = operand_1 / operand_2;
+	
+	// Display the result to the user
+	Display results;
+End Module
+

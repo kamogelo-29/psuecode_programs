@@ -1,0 +1,152 @@
+rock paper scissors game
+
+1. Display an intro message
+2. The compare module will take in two parameters of the players input. and return the results
+3. The score_board module will take the results from the compare module and display who won and in what round.
+
+
+Module main()
+	// Call the intro module
+	Call intro_message();
+	
+	// Declare player variables and result variable
+	Declare String player_1 = ;
+	Declare String computer = ;
+	Declare String game_result;
+	Declare String winner = ;
+	// Initialize the current score and game round. In the future we would want to bring the stats of previous games
+	Declare Integer score1 = 0;
+	Declare Integer score2 = 0;
+	Declare Integer game_round = 0;
+	
+	// get the players choices
+	Display "Player 1 please choice between rock, paper or scissors or exit to exit the game: ";
+	Input player_1;
+	
+	// condition controlled loop
+	While game_round <= 5 AND player_1 != "exit":
+	
+		// let us execute the whole program
+		Call computer_choice(computer);
+	
+		//Now compare both the computer and player_1 choices and return the results
+		Call compare(player_1, computer, game_results);
+	
+		// Now display the score board 
+		Call score_board(game_results, score1, score2, game_round);
+		
+		// increment the counter variable
+		game_round = game_round + 1
+		
+		// get the players choices
+		Display "Player 1 please choice between rock, paper or scissors or exit to exit the game: ";
+		Input player_1;
+		
+	End While
+	
+	// When the game is over
+	Call total_result(score1, score2, game_round);
+	Display "Thank you for playing"
+	
+End Module
+
+Module intro_message():
+
+	// Tell the user what the program does
+	Display "Welcome user to the game of rock, paper, scissors";
+	Display "In this game you will be asked to choose between rock, paper or scissors";
+	Display "The computer will be your opponent. The computer will select randomly from the 3 choices";
+	Display "Your choice will be compared against the computer`s choice to determine who is the winner";
+	Display "You have 5 rounds before the game ends.";
+	Display "Good luck on your journey and begin.";
+	
+End Module
+	
+Module computer_choice(String Ref C_results):
+	// We will be using the random module, 
+	// which is a built in module in most programming languages.
+	// Since we have 3 choices we will use random integer.
+	// The computer will guess 3 numbers and each number will represent either rock, paper or scissors.
+	
+	// Declare the variable that will hold the random number and choice results
+	Declare Integer choice;
+	
+	// assign the expression of random number to choice
+	// The  random module will call numbers start from 0 ending at 2 but not including 3
+	Set choice = Call Random(3);
+	
+	// Setting the rules on what to happen based on the random choice
+	If choice == 1 Then:
+		Set c_results = "rock";
+	Else If choice == 2 Then:
+		Set c_results = "paper";
+	Else:
+		Set c_results = "scissors";
+	End If
+
+End Module
+
+Module compare(String player_1, String player_2, String Ref winner);
+	//This module will compare both of the players input and return who won
+	
+	// now the rules and logic of comparing
+	If player_1 == "rock" AND player_2 == "scissors" Then:
+		// The first condition for player one to win
+		Set winner = player_1;
+	Else If player_1 == "paper" AND player_2 == "rock" Then:
+		// The second condition for player one to win
+		Set winner = player_1;
+	Else If player_1 == "scissors" AND player_2 == "paper" Then:
+		// The third condition for player one to win
+		Set winner = player_1;
+	Else:
+		// When all the 3 conditions above fail, it means player two has won
+		Set winner = player_2
+	End If
+	
+End Module
+
+Module score_board(String results, Integer Ref score_1, Integer Ref score_2, Integer Ref round):
+	// This module will be displaying the winner of the current game round
+	// It will first increase the score and the current game round
+	
+	// Rules on who won in the current round
+	Select results:
+		Case "tie" Then:
+			// Check if the result parameter is the word tie, then non of the players won and the scores remain the same
+			Display "Round: ", round, "is a tie";
+			Display "The current score is Player 1: ", player_1, "vs Player 2: ", player_2;
+		Case "player_1" Then:
+			// Checks if the result parameter is player one, and if true then the
+			Set score_1 = score_1 + 1;
+			Display "Round: ", round, "goes to Player 1"
+			Display "The current score is Player 1: ", score_1, "vs Player 2: ", score_2;
+		default:
+			// The last if statement says if all the conditions above are false then this means player 2 has won
+			Set score_2 = score_2 + 1;
+			Display "Round: ", round, "goes to Player 2"
+			Display "The current score is Player 1: ", score_1, "vs Player 2: ", score_2;
+	End Selection
+End Module
+
+Module total_result(Integer player_1, Integer player_2):
+	// This module will determine the final results of the whole game
+	// We are checking is it a tie or player 1 or player 2 won.
+
+	// We start by checking for a tie
+	If player_1 == player_2 Then:
+		Display "Game over";
+		Display "It is a tie";
+		Display "Player 1: ", player_1," vs ", "Player 2: ", player_2;
+	// Determine if player 1 has won the game by comparing the scores
+	Else If player_1 > player_2 Then: 
+		Display "Game over";
+		Display "Player 1 has Won the game:";
+		Display "Player 1: ", player_1, " vs " ,"Player 2: ", player_2;
+	// If all above is false then player 2 has won the whole game
+	Else: 
+		Display "Game over";
+		Display "Player 2 has Won the game:";
+		Display "Player 1: ", player_1, " vs ". "Player 2: ", player_2;
+	End If
+End Module
